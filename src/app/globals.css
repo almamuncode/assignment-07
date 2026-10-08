@@ -1,2 +1,38 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+  --page: #f0f6f2;
+  --surface: #ffffff;
+  --ink: #202b24;
+  --muted: #65736b;
+  --line: #dde8df;
+  --brand: #008c42;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { background: var(--page); color: var(--ink); font-family: Arial, "Noto Sans Bengali", sans-serif; }
+a, button, input, select { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+.page-container { width: 100%; max-width: 1152px; margin-inline: auto; padding-inline: 16px; }
+.text-muted { color: var(--muted); }
+.btn-brand { background: var(--brand); border-color: var(--brand); color: white; font-weight: 600; }
+.btn-brand:hover { background: #007137; border-color: #007137; }
+.btn-soft { background: white; border-color: var(--line); color: var(--ink); }
+.product-card { padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; transition: border-color .2s, box-shadow .2s; }
+a.product-card:hover { border-color: #86b798; box-shadow: 0 4px 16px #173f2110; }
+.product-emoji { display: grid; place-items: center; width: 48px; height: 48px; flex-shrink: 0; background: var(--page); border-radius: 12px; font-size: 28px; }
+.change-badge { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; border-radius: 999px; padding: 4px 8px; font-size: 12px; font-weight: 600; }
+.change-up { background: #e8f7ee; color: #087b3a; }
+.change-down { background: #fff0ee; color: #bf3530; }
+.change-flat { background: #f0f3f1; color: #65736b; }
+.surface { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+.input, .select { background: white; border-color: #d4dfd7; color: var(--ink); width: 100%; }
+.ticker-track { display: flex; width: max-content; animation: ticker-scroll 95s linear infinite; }
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-track { animation: none; }
+  .ticker { overflow-x: auto; }
+  .skeleton { animation: none; }
+}
