@@ -11,7 +11,6 @@ export default function AuthForm({ mode, notice, next, oauthError }: { mode: "si
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   const signup = mode === "signup";
-  // Only local product/profile destinations are accepted from the URL.
   const destination = safeReturnTo(next);
   useEffect(() => {
     if (notice === "protected") toast.error("বিস্তারিত দেখতে আগে সাইন ইন করুন।", { id: "protected-route" });
