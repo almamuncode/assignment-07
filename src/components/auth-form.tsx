@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, type FormEvent } from "react";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import { safeReturnTo } from "@/lib/navigation";
 
 export default function AuthForm({ mode, notice, next, oauthError }: { mode: "signin" | "signup"; notice?: string; next?: string; oauthError?: string }) {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function AuthForm({ mode, notice, next, oauthError }: { mode: "si
   const [error, setError] = useState("");
   const signup = mode === "signup";
   // Only local product/profile destinations are accepted from the URL.
-  const destination = next && /^\/(product\/[a-z0-9-]+|profile(?:\/edit)?)$/.test(next) ? next : "/";
+  const destination = safeReturnTo(next);
   useEffect(() => {
     if (notice === "protected") toast.error("বিস্তারিত দেখতে আগে সাইন ইন করুন।", { id: "protected-route" });
     if (oauthError) toast.error("সোশ্যাল সাইন ইন সম্পন্ন হয়নি। আবার চেষ্টা করুন।", { id: "oauth-error" });
