@@ -2,6 +2,8 @@
 
 A responsive Bangla market-price app built for **assignment-07**. Browse essential groceries, track daily price changes, and compare prices across markets in Bangladesh.
 
+**Live app:** [assignment-07-mocha.vercel.app](https://assignment-07-mocha.vercel.app)
+
 ## Features
 
 - **Live market data:** eight categories and all products from the assignment API.
@@ -105,7 +107,7 @@ Verified during implementation:
 - Production HTTP checks for home, category, auth, invalid routes, protected redirects, and unconfigured-auth responses.
 - Browser checks at desktop, 440px mobile, and 768px tablet widths; category sorting, protected redirect toast, and form validation.
 
-Real registration/login, OAuth callbacks, logout, and persisted profile updates still require MongoDB and OAuth credentials and must be tested after configuration.
+Production credentials are configured in Vercel. Real registration/login, OAuth callbacks, logout, and persisted profile updates must be tested on the live domain after registering production callbacks and confirming MongoDB network access.
 
 ## Deploy to Vercel
 
@@ -115,7 +117,14 @@ Real registration/login, OAuth callbacks, logout, and persisted profile updates 
 4. Deploy with `npm run build`; use the standard Next.js output, not static export.
 5. Check registration, sign-in, both social providers, logout, profile updates, and direct refreshes of category/product routes.
 
-Deployment and service provisioning are deferred until credentials and a hosting project are available. No deployment is claimed here.
+The app is deployed at [assignment-07-mocha.vercel.app](https://assignment-07-mocha.vercel.app), with production environment variables configured in Vercel and GitHub connected for automatic deployments. `.vercelignore` excludes local environment files from source uploads; `vercel.json` selects the Next.js framework preset.
+
+Production OAuth callbacks must be registered with the providers:
+
+- Google: `https://assignment-07-mocha.vercel.app/api/auth/callback/google`
+- GitHub: `https://assignment-07-mocha.vercel.app/api/auth/callback/github`
+
+Retain the localhost callback for local development where the provider permits multiple callbacks. For a GitHub OAuth app that supports only one callback in your dashboard, use separate local and production apps. MongoDB network access must permit the deployed backend.
 
 ## Design and known limitations
 
