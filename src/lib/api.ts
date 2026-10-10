@@ -1,7 +1,7 @@
 import { cache } from "react";
 import type { Category, Product } from "@/types";
 
-const API_BASE_URL = "https://api.api-store.workers.dev/api/bazardor";
+const API_BASE_URL = "https://openapi.programming-hero.com/api/bazardor";
 
 export const API_ENDPOINTS = {
   categories: `${API_BASE_URL}/categories`,
